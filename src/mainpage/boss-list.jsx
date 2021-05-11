@@ -1,11 +1,10 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import Bg2 from '../../img/bg-2.webp';
 import axios from 'axios';
 
-function Bosslist() {
-  // const queryClient = useQueryClient();
+import Bg2 from '../img/bg-2.webp';
 
+function Bosslist() {
   const { isLoading, error, data } = useQuery('boss', () => {
     return axios.get('http://localhost:3001/boss');
   });
@@ -23,8 +22,9 @@ function Bosslist() {
         backgroundImage: `url(${Bg2})`,
         backgroundSize: `cover`,
         backgroundRepeat: `no-repeat`,
-        backgroundPosition: `center`,
-      }}>
+        backgroundPosition: `center`
+      }}
+    >
       <h1 className="text-3xl md:text-4xl font-rufina text-white font-bold">Boss du Château Nathria</h1>
       {data.data.map((boss) => {
         return (
@@ -35,8 +35,9 @@ function Bosslist() {
               backgroundImage: `url(${boss.image})`,
               backgroundSize: `cover`,
               backgroundRepeat: `no-repeat`,
-              backgroundPosition: `left`,
-            }}>
+              backgroundPosition: `left`
+            }}
+          >
             {boss.name}
           </div>
         );

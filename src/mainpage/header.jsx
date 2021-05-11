@@ -1,7 +1,7 @@
 import React from 'react';
-import LogoWow from '../../img/logoWow.webp';
-import LogoRaid from '../../img/LogoRaid.webp';
-import Map from '../../img/Map.webp';
+import LogoWow from '../img/LogoWow.webp';
+import LogoRaid from '../img/LogoRaid.webp';
+import Map from '../img/Map.webp';
 
 function Header() {
   return (

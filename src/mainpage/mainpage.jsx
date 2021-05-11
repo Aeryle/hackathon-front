@@ -1,5 +1,5 @@
 import React from 'react';
-import Bg1 from '../../img/bg-1.webp';
+import Bg1 from '../img/bg-1.webp';
 import Header from './header';
 import Bosslist from './boss-list';
 

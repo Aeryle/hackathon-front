@@ -3,37 +3,12 @@
 @tailwind utilities;
 
 body {
-  background-color: black;
   margin: 0;
+  background-color: black;
 }
 
 code {
-  color: #1d0900;
   font-weight: bold;
-  background-color: #ed6c6d;
   padding: 0.3rem;
   border-radius: 3px;
-}
-
-.rsw-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.rsw-item {
-  text-align: center;
-  padding: 1rem;
-}
-
-.rsw-item > img {
-  max-width: 80vw;
-  margin: 0 auto;
-}
-
-.rsw-container::after {
-  content: '';
-  height: 15vh;
 }
