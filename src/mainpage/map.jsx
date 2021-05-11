@@ -1,7 +1,7 @@
 import React from 'react';
-import MapImg from '../../img/Map.webp';
-import Bg2 from '../../img/bg-2.webp';
-import LogoWild from '../../img/LogoWild.webp';
+import MapImg from '../img/Map.webp';
+import Bg2 from '../img/bg-2.webp';
+import LogoWild from '../img/LogoWild.webp';
 
 function Map() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import LogoWow from '../../img/LogoWow.webp';
-import LogoRaid from '../../img/LogoRaid.webp';
+import LogoWow from '../img/LogoWow.webp';
+import LogoRaid from '../img/LogoRaid.webp';
 
 function Header() {
   return (

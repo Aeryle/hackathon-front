@@ -1,10 +1,9 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import Bg3 from '../../img/bg-3.webp';
-function Bosslist() {
-  // const queryClient = useQueryClient();
+import Bg3 from '../img/bg-3.webp';
 
+function Bosslist() {
   const { isLoading, error, data } = useQuery('boss', () => {
     return axios.get('http://localhost:3001/boss');
   });
