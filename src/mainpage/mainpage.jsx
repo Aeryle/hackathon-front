@@ -2,6 +2,7 @@ import React from 'react';
 import Bg1 from '../../img/bg-1.webp';
 import Header from './header';
 import Bosslist from './boss-list';
+import Map from './map.jsx';
 
 function Mainpage() {
   return (
@@ -11,11 +12,11 @@ function Mainpage() {
         backgroundImage: `url(${Bg1})`,
         backgroundSize: `cover`,
         backgroundRepeat: `no-repeat`,
-        backgroundPosition: `center`,
       }}>
       <div className="">
         <Header />
         <Bosslist />
+        <Map />
       </div>
     </div>
   );
