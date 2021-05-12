@@ -30,7 +30,7 @@ function Boss() {
   console.log(strategies);
   return (
     <div
-      className="md:px-5"
+      className="md:px-16"
       style={{
         backgroundImage: `url(${BossBackground})`,
         backgroundSize: `cover`,
@@ -39,11 +39,12 @@ function Boss() {
         backgroundAttachment: `fixed`,
       }}>
       <div className="px-5 pt-3 bg-cover bg-center text-white">
-        <div className="md:flex md:justify-end w-full md:mx-0">
+        <div className="md:flex md:justify-between md:items-center w-full md:mx-0">
           <Link to="/">
             {' '}
-            <img className="w-12/12" src={LogoWow} alt="Raid's logo" />
+            <button className="focus:outline-none bg-white bg-opacity-10 px-5 py-2 rounded-3xl ml-10">Return Boss List</button>
           </Link>
+          <img className="w-12/12" src={LogoWow} alt="Raid's logo" />
         </div>
         <div className="flex flex-row-reverse">
           <div className="md:flex-col w-full md:pl-10">
