@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQueries, useQuery } from 'react-query';
+import { useQuery } from 'react-query';
 import axios from 'axios';
 
 import BossBackground from '../img/bossBackground.png';
@@ -8,27 +8,22 @@ import LogoWow from '../img/LogoWow.webp';
 
 function Boss() {
   const { bossId } = useParams();
-  const { isLoading, error, data } = useQuery([ 'boss', bossId ], () => axios(`http://localhost:3001/boss/${bossId}`));
+  const {
+    isLoading,
+    error,
+    data
+  } = useQuery(['boss', bossId], () => axios(`http://localhost:3001/boss/${bossId}`));
 
-  const q = useQueries(
-    (data?.data?.phases || []).map(
-      (phase) => ({
-        queryKey: [ 'phases', phase.id ],
-        queryFn: () => axios(`http://localhost:3001/boss/${bossId}/phases/${phase.id}/strategies`),
-        enabled: isLoading
-      })
-    )
-  );
+  const strategies = useQuery([data?.data?.phases?.[0]?.id], () => axios(`http://localhost:3001/boss/${bossId}/phases/${data?.data?.phases?.[0]?.id}`));
 
-  console.log({ q, isLoading, data });
+  const [shownRole, setShownRole] = useState('Tank');
 
   if (isLoading) {
     return 'loading';
-  } else if (error) {
+  }
+  if (error) {
     return 'error';
   }
-
-  console.log('f');
 
   const boss = data.data;
 
@@ -46,15 +41,50 @@ function Boss() {
       </div>
       <div className="flex items-center flex-col text-white">
         <img src={boss.image} alt={boss.name} />
-        {boss.phases.map((phase, index) => {
-          return (
-            <Fragment key={phase.id}>
-              <h3 className="text-2xl">Phase {index + 1} ({phase.name})</h3>
-              <p>{phase.strategy}</p>
-            </Fragment>
-          );
-        })}
+        {boss.phases.map((phase, index) => (
+          <Fragment key={phase.id}>
+            <h3 className="text-2xl">
+              Phase
+              {index + 1}
+              {' '}
+              (
+              {phase.name}
+              )
+            </h3>
+            <p>{phase.strategy}</p>
+            {index === 0 && !strategies.isLoading && !strategies.error
+            && (
+              <>
+                <div className="text-2xl text-white flex">
+                  {strategies.data.data.map((strategy) => (
+                    <button key={strategy.id} onClick={() => setShownRole(strategy.name)}>
+                      <img src={strategy.role.image} alt={strategy.role.name} className="h-12" />
+                    </button>
+                  ))}
+                </div>
+                <div className="text-white">
+                  <p
+                    className="text-xl text-white"
+                  >
+                    {strategies.data.data.find((strategy) => strategy.role.name === shownRole).name}
+                  </p>
+                  {strategies.data.data.find((strategy) => strategy.role.name === shownRole)
+                    .description
+                    .split('\r\n')
+                    .filter((description) => description)
+                    .map((description, index) => <p key={index}>{description}</p>)}
+                </div>
+              </>
+            )}
+          </Fragment>
+        ))}
       </div>
+      {boss.videos.length && (
+        <div className="text-white">
+          <p className="text-2xl">Video</p>
+          <p>{boss.videos.map((video) => video.url)}</p>
+        </div>
+      )}
     </>
   );
 }

@@ -9,10 +9,11 @@ function Mainpage() {
       className="w-screen h-screen"
       style={{
         backgroundImage: `url(${Bg1})`,
-        backgroundSize: `cover`,
-        backgroundRepeat: `no-repeat`,
-        backgroundPosition: `center`,
-      }}>
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}
+    >
       <div className="">
         <Header />
         <Bosslist />
