@@ -72,7 +72,7 @@ function Boss() {
                     .description
                     .split('\r\n')
                     .filter((description) => description)
-                    .map((description, index) => <p key={index}>{description}</p>)}
+                    .map((description, i) => <p key={i}>{description}</p>)}
                 </div>
               </>
             )}
