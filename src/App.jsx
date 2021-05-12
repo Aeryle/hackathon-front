@@ -2,7 +2,6 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';
-
 import Mainpage from './mainpage/mainpage.jsx';
 import Boss from './components/Boss';
 

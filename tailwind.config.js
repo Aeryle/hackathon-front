@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         rufina: ['Rufina', 'sans-serif'],
+        ruthie: ['Ruthie', 'sans-serif'],
       },
     },
   },
