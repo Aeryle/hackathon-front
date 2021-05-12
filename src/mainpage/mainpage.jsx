@@ -12,6 +12,7 @@ function Mainpage() {
         backgroundImage: `url(${Bg1})`,
         backgroundSize: `cover`,
         backgroundRepeat: `no-repeat`,
+        backgroundPosition: 'center',
       }}>
       <div className="">
         <Header />

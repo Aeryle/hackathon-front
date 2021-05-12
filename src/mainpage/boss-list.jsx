@@ -2,15 +2,15 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import Bg3 from '../img/bg-3.webp';
+import { Link } from 'react-router-dom';
 
 function Bosslist() {
-  const { isLoading, error, data } = useQuery('boss', () => {
-    return axios.get('http://localhost:3001/boss');
-  });
+  const { isLoading, error, data } = useQuery('boss', () => axios.get('http://localhost:3001/boss'));
 
   if (isLoading) {
     return <p>IsLoading...</p>;
-  } else if (error) {
+  }
+  if (error) {
     return <h1>Error Sorry...</h1>;
   }
 
@@ -29,8 +29,10 @@ function Bosslist() {
         {data.data.map((boss) => {
           return (
             <div className="" key={boss.id}>
-              <img className="mt-3 w-40 md:w-80 h-66 shadow-2xl" src={boss.image} alt="bossImg" />
-              <div className="mt-5  text-white mb-8 md:w-80 w-40 text-center font-rufina text-xl md:text-2xl font-bold">{boss.name}</div>
+              <Link to={`/boss/${boss.id}`}>
+                <img className="mt-3 w-40 md:w-80 h-66 shadow-2xl" src={boss.image} alt="bossImg" />
+                <div className="mt-5  text-white mb-8 md:w-80 w-40 text-center font-rufina text-xl md:text-2xl font-bold">{boss.name}</div>
+              </Link>
             </div>
           );
         })}
